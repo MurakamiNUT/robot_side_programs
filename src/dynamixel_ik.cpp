@@ -174,8 +174,9 @@ void chatterCallback(const pc_side_programs::Controller& controller_){
         ROS_INFO("data:[ID%d::%s]",i+2, log);
         */
 		  for(int i=0; i < Servo_id_array; i++){
-		      dxl_wb.reboot(Servo_id[i],&log);
-		      dxl_wb.torque(Servo_id[i],1,&log);
+        dxl_wb.getRadian(Servo_id[i], &Servo_P_radian[i], &log);
+		      //dxl_wb.reboot(Servo_id[i],&log);
+		      //dxl_wb.torque(Servo_id[i],1,&log);
 		  }
       }
 /*
@@ -438,7 +439,7 @@ int main(int argc, char **argv)
    * You must call one of the versions of ros::init() before using any other
    * part of the ROS system.
    */
-  ros::init(argc, argv, "dynamixel");
+  ros::init(argc, argv, "dynamixel_ik");
 
   /**
    * NodeHandle is the main access point to communications with the ROS system.
@@ -507,7 +508,7 @@ int main(int argc, char **argv)
     }
 
     for(int i = 0;i < Servo_id_array; i++){
-        dxl_wb.writeRegister(Servo_id[i],"Goal_Velocity",dxl_wb.convertVelocity2Value(Servo_id[i],4),&log);
+        dxl_wb.writeRegister(Servo_id[i],"Goal_Velocity",dxl_wb.convertVelocity2Value(Servo_id[i],0.3),&log);
         ROS_INFO("data:[ID%d::%s]",i+2, log);
         dxl_wb.writeRegister(Servo_id[i],"Goal_Acceleration",10,&log);
         ROS_INFO("data:[ID%d::%s]",i+2, log);

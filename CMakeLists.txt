@@ -83,6 +83,10 @@ find_package(catkin REQUIRED COMPONENTS
 add_executable(dynamixel src/dynamixel.cpp)
 target_link_libraries(dynamixel ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 add_dependencies(dynamixel beginner_tutorials_generate_messages_cpp)
+
+add_executable(dynamixel_ik src/dynamixel_ik.cpp)
+target_link_libraries(dynamixel_ik ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+add_dependencies(dynamixel_ik beginner_tutorials_generate_messages_cpp)
 add_definitions(-std=c++11)
 ##-------------------------------------------------------------------
 ################################################
