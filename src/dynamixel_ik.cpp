@@ -301,10 +301,13 @@ void chatterCallback_key(const std_msgs::Int32& msg){
   }
 }
 float correction[3] = {0, 0, 0};
+float dxl_value[3] = {0,0,0};
 void chatterCallback_joint(const sensor_msgs::JointState& msg){
   if(!emerge){
     for(int i = 0; i < 3; i++){
-      ROS_INFO("Servo_P_radian:[ID%d::%f]",i+2, msg.position[i] - correction[i]);
+      if(msg.position[i] > 3.1415926535)  dxl_value[i] = msg.position[i] - 6.28318531;
+      else dxl_value[i] = msg.position[i];
+      ROS_INFO("Servo_P_radian:[ID%d::%f]",i+2,dxl_value[i] - correction[i] );
       //Servo_P_radian[i] = msg.position[i] - correction[i];
     }
   }
