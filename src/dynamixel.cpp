@@ -308,6 +308,7 @@ void chatterCallback_joint(const sensor_msgs::JointState& msg){
     }
   }
 }
+//Servo_P_radianへの代入
 void servo_control(){
   static double V_Step[SERVO_NUM];
   //if(ARM_MODE){
@@ -331,6 +332,7 @@ void servo_control(){
     }
   //}
 }
+
 void time_manage(){
   const char *log;
   if(time_flg){
@@ -513,7 +515,7 @@ int main(int argc, char **argv)
         ROS_INFO("data:[ID%d::%s]",i+2, log);
   	}
       
-  ros::Rate loop_rate(CONTROL_TIME);
+  // ros::Rate loop_rate(CONTROL_TIME);
 while(ros::ok()){
   servo_control();
   time_manage();
@@ -524,7 +526,7 @@ while(ros::ok()){
 
      // for(int i = 0;i < 7; i++) ROS_INFO("data:[%d]",  dxl_wb.convertRadian2Value(Servo_id[i], Servo_P_radian[i]));
   ros::spinOnce();
-  loop_rate.sleep();
+  // loop_rate.sleep();
 }
 }
 // %EndTag(FULLTEXT)%
