@@ -87,6 +87,11 @@ add_dependencies(dynamixel beginner_tutorials_generate_messages_cpp)
 add_executable(dynamixel_ik src/dynamixel_ik.cpp)
 target_link_libraries(dynamixel_ik ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 add_dependencies(dynamixel_ik beginner_tutorials_generate_messages_cpp)
+
+add_executable(move_dynamixel_conjuction_rviz src/move_dynamixel_conjuction_rviz.cpp)
+target_link_libraries(move_dynamixel_conjuction_rviz ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+add_dependencies(move_dynamixel_conjuction_rviz beginner_tutorials_generate_messages_cpp)
+
 add_definitions(-std=c++11)
 ##-------------------------------------------------------------------
 ################################################
