@@ -269,12 +269,12 @@ void chatterCallback_key(const std_msgs::Int32& msg){
   //   case 44://手首右回転
 	// // Servo_P_radian[5] = Servo_P_radian[5] - 1.5707;
   //   break;
-    case 119://カメラ前
-	Servo_P_radian[9] = 0;
-    break;
-    case 115://カメラ後ろ
-	Servo_P_radian[9] = 3.14;
-    break;
+  //   case 119://カメラ前
+	// Servo_P_radian[9] = 0;
+  //   break;
+  //   case 115://カメラ後ろ
+	// Servo_P_radian[9] = 3.14;
+  //   break;
 //stop command
     case 111:{
 	emerge = false;
@@ -316,7 +316,7 @@ void chatterCallback_joint(const moveit_msgs::DisplayRobotState& msg){
     //   Servo_P_radian[i] = msg.position[i] - correction[i];
         for(int i = 0; i < 6; i++){
             dxl_value[i] = msg.state.joint_state.position[i];
-            ROS_INFO("Servo_P_radian:[ID%d::%f]",i,dxl_value[i] - correction[i] );            
+            // ROS_INFO("Servo_P_radian:[ID%d::%f]",i,dxl_value[i] - correction[i] );            
             Servo_P_radian[i] = msg.state.joint_state.position[i] - correction[i];    
         }
     }
