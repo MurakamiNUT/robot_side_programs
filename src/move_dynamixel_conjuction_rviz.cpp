@@ -286,23 +286,23 @@ void chatterCallback_key(const std_msgs::Int32& msg){
     	break;
 }
 
-    case 99://c
-      FILE *outputfile;
-      std::string str ="/home/kimuralab-nuc1/pose/" + std::to_string(ros::Time::now().toSec());
-      const char* p = str.c_str();
-      outputfile = fopen(p,"w");
-      fprintf(outputfile, "{"); // ファイルに書き出し
-      for(int i=0; i < Servo_id_array; i++){
-        fprintf(outputfile, "%d",dxl_wb.convertRadian2Value(Servo_id[i], Servo_P_radian[i])); // ファイルに書き出し
-        if(i != Servo_id_array-1)fprintf(outputfile, ", "); // ファイルに書き出し
-      }
-      fprintf(outputfile, "}"); // ファイルに書き出し
-      fclose(outputfile);          // ファイルをクローズ(閉じる)
+    // case 99://c
+    //   FILE *outputfile;
+    //   std::string str ="/home/kimuralab-nuc1/pose/" + std::to_string(ros::Time::now().toSec());
+    //   const char* p = str.c_str();
+    //   outputfile = fopen(p,"w");
+    //   fprintf(outputfile, "{"); // ファイルに書き出し
+    //   for(int i=0; i < Servo_id_array; i++){
+    //     fprintf(outputfile, "%d",dxl_wb.convertRadian2Value(Servo_id[i], Servo_P_radian[i])); // ファイルに書き出し
+    //     if(i != Servo_id_array-1)fprintf(outputfile, ", "); // ファイルに書き出し
+    //   }
+    //   fprintf(outputfile, "}"); // ファイルに書き出し
+    //   fclose(outputfile);          // ファイルをクローズ(閉じる)
 
-      for(int i=0; i < Servo_id_array; i++){
-        ROS_INFO("data:[ID%d::%d]",i+2, dxl_wb.convertRadian2Value(Servo_id[i], Servo_P_radian[i]));
-      }
-    break;
+    //   for(int i=0; i < Servo_id_array; i++){
+    //     ROS_INFO("data:[ID%d::%d]",i+2, dxl_wb.convertRadian2Value(Servo_id[i], Servo_P_radian[i]));
+    //   }
+    // break;
   }
 }
 float correction[3] = {0, 0, 0};
